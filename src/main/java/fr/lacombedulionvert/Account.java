@@ -1,5 +1,7 @@
 package fr.lacombedulionvert;
 
+import java.time.LocalDate;
+
 public class Account {
 
     private static final String STATEMENT_HEADER = "DATE \t\t | AMOUNT \t | BALANCE";
@@ -18,14 +20,14 @@ public class Account {
 
     public void deposit(int amount) {
         balance += amount;
-        String date = "2019/11/12";
-        statement += "\n" + date + " \t | " + amount + " \t | " + balance;
+        LocalDate date = LocalDate.now();
+        statement += "\n" + date.toString() + " \t | " + amount + " \t | " + balance;
     }
 
     public void withdraw(int amount) {
         balance -= amount;
-        String date = "2019/11/12";
-        statement += "\n" + date + " \t | -" + amount + " \t | " + balance;
+        LocalDate date = LocalDate.now();
+        statement += "\n" + date.toString() + " \t | -" + amount + " \t | " + balance;
     }
 
     public String printStatement() {
