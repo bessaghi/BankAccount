@@ -60,7 +60,7 @@ public class AccountTest {
         String actualStatement = account.toString();
 
         // Then
-        Assertions.assertThat(actualStatement).isEqualTo("DATE \t\t | AMOUNT \t | BALANCE");
+        Assertions.assertThat(actualStatement).isEqualTo("DATE \t\t | AMOUNT \t | BALANCE\n");
     }
 
     @Test

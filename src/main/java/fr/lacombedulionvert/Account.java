@@ -7,6 +7,8 @@ import static fr.lacombedulionvert.Transactions.create;
 
 public class Account {
 
+    private static final String STATEMENT_HEADER = "DATE \t\t | AMOUNT \t | BALANCE\n";
+
     private int balance;
     private Transactions transactions;
 
@@ -39,6 +41,6 @@ public class Account {
 
     @Override
     public String toString() {
-        return transactions.toString();
+        return STATEMENT_HEADER + transactions;
     }
 }
