@@ -25,10 +25,9 @@ public class Account {
 
     public void deposit(int amount) {
         balance += amount;
-        LocalDate date = LocalDate.now();
         transactions.add(Transaction.Builder.aTransaction()
                 .withOperation(Operation.DEPOSIT)
-                .withDate(date)
+                .withDate(LocalDate.now())
                 .withAmount(amount)
                 .withBalance(balance)
                 .build());
@@ -36,10 +35,9 @@ public class Account {
 
     public void withdraw(int amount) {
         balance -= amount;
-        LocalDate date = LocalDate.now();
         transactions.add(Transaction.Builder.aTransaction()
                 .withOperation(Operation.WITHDRAWAL)
-                .withDate(date)
+                .withDate(LocalDate.now())
                 .withAmount(amount)
                 .withBalance(balance)
                 .build());
