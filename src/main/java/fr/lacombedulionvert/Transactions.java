@@ -1,12 +1,13 @@
 package fr.lacombedulionvert;
 
 import java.util.LinkedList;
+import java.util.stream.Collectors;
 
 public class Transactions {
 
     private static final String DELIMITER = "\n";
 
-    private LinkedList<String> transactions;
+    private LinkedList<Transaction> transactions;
 
     private Transactions() {
         this.transactions = new LinkedList<>();
@@ -17,11 +18,13 @@ public class Transactions {
     }
 
     public void add(Transaction transaction) {
-        transactions.addLast(transaction.toString());
+        transactions.addLast(transaction);
     }
 
     @Override
     public String toString() {
-        return String.join(DELIMITER, transactions);
+        return transactions.stream()
+                .map(Transaction::toString)
+                .collect(Collectors.joining(DELIMITER));
     }
 }
