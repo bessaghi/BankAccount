@@ -3,6 +3,7 @@ package fr.lacombedulionvert;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Account {
 
@@ -33,10 +34,9 @@ public class Account {
     }
 
     public String printStatement() {
-        String statement = STATEMENT_HEADER;
-        for (Transaction tr :  transactions){
-            statement += tr.toString();
-        }
-        return statement;
+        String collect = transactions.stream()
+                .map(Transaction::toString)
+                .collect(Collectors.joining());
+        return STATEMENT_HEADER + collect;
     }
 }
