@@ -99,4 +99,20 @@ public class AccountTest {
                 "\n2019/11/12 \t | 500 \t | 500" +
                 "\n2019/11/12 \t | 200 \t | 700");
     }
+
+    @Test
+    public void print_statement_after_a_deposit_and_a_withdrawal_displays_the_operations_in_the_statement() {
+        // Given
+        Account account = new Account();
+
+        // When
+        account.deposit(500);
+        account.withdraw(200);
+        String actualStatement = account.printStatement();
+
+        // Then
+        Assertions.assertThat(actualStatement).isEqualTo("DATE \t | AMOUNT \t | BALANCE" +
+                "\n2019/11/12 \t | 500 \t | 500" +
+                "\n2019/11/12 \t | -200 \t | 300");
+    }
 }

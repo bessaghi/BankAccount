@@ -23,6 +23,7 @@ public class Account {
 
     public void withdraw(int amount) {
         balance -= amount;
+        statement += "\n2019/11/12 \t | -" + amount + " \t | " + balance;
     }
 
     public String printStatement() {
