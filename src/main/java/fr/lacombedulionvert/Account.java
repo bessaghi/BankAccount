@@ -3,6 +3,7 @@ package fr.lacombedulionvert;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Consumer;
 import java.util.stream.Collectors;
 
 import static fr.lacombedulionvert.Transaction.Builder.aTransaction;
@@ -26,16 +27,15 @@ public class Account {
     }
 
     public void deposit(int amount) {
-        balance += amount;
-        transactions.add(operate(amount, Operation.DEPOSIT));
+        transactions.add(operate(amount, Operation.DEPOSIT, a -> balance = balance + a));
     }
 
     public void withdraw(int amount) {
-        balance -= amount;
-        transactions.add(operate(amount, Operation.WITHDRAWAL));
+        transactions.add(operate(amount, Operation.WITHDRAWAL, a -> balance = balance - a));
     }
 
-    private Transaction operate(int amount, Operation operation) {
+    private Transaction operate(int amount, Operation operation, Consumer<Integer> function) {
+        function.accept(amount);
         return aTransaction()
                 .withOperation(operation)
                 .withDate(LocalDate.now())
