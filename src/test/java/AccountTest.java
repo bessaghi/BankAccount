@@ -59,7 +59,7 @@ public class AccountTest {
     }
 
     @Test
-    public void print_statement() {
+    public void print_statement_for_a_new_account_prints_only_the_header() {
         // Given
         Account account = new Account();
 
