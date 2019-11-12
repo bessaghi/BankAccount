@@ -1,6 +1,8 @@
 package fr.lacombedulionvert;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Account {
 
@@ -8,10 +10,12 @@ public class Account {
 
     private int balance;
     private String statement;
+    private List<Transaction> transactions;
 
     public Account() {
         balance = 0;
         statement = STATEMENT_HEADER;
+        transactions = new ArrayList<>();
     }
 
     public int getBalance() {
