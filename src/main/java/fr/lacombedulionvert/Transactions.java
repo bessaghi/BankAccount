@@ -7,20 +7,18 @@ public class Transactions {
 
     private static final String STATEMENT_HEADER = "DATE \t\t | AMOUNT \t | BALANCE";
 
-    private LinkedList<Transaction> transactions;
+    private LinkedList<String> transactions;
 
     public Transactions() {
         transactions = new LinkedList<>();
+        transactions.add(STATEMENT_HEADER);
     }
 
     public void add(Transaction transaction) {
-        transactions.addLast(transaction);
+        transactions.addLast(transaction.toString());
     }
 
     public String printStatement() {
-        String collect = transactions.stream()
-                .map(Transaction::toString)
-                .collect(Collectors.joining());
-        return STATEMENT_HEADER + collect;
+        return transactions.stream().collect(Collectors.joining());
     }
 }
