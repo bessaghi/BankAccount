@@ -17,7 +17,7 @@ public class AccountTest {
     }
 
     @Test
-    public void deposit() {
+    public void deposit_an_amount_into_an_account_increases_the_balance() {
         // Given
         Account account = new Account();
 
