@@ -18,7 +18,7 @@ public class Account {
 
     public void deposit(int amount) {
         balance += amount;
-        statement += "\n2019/11/12 \t | 500 \t | 500";
+        statement += "\n2019/11/12 \t | " + amount + " \t | " + balance;
     }
 
     public void withdraw(int amount) {
