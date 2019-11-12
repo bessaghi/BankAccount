@@ -8,7 +8,7 @@ public class Transaction {
     private final int amount;
     private final int balance;
 
-    public Transaction(Operation operation, LocalDate date, int amount, int balance) {
+    private Transaction(Operation operation, LocalDate date, int amount, int balance) {
         this.operation = operation;
         this.date = date;
         this.amount = amount;

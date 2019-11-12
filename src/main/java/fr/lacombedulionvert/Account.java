@@ -35,7 +35,12 @@ public class Account {
     public void withdraw(int amount) {
         balance -= amount;
         LocalDate date = LocalDate.now();
-        transactions.add(new Transaction(Operation.WITHDRAWAL, date, amount, balance));
+        transactions.add(Transaction.Builder.aTransaction()
+                .withOperation(Operation.WITHDRAWAL)
+                .withDate(date)
+                .withAmount(amount)
+                .withBalance(balance)
+                .build());
     }
 
     public String printStatement() {
