@@ -71,7 +71,7 @@ public class AccountTest {
     }
 
     @Test
-    public void print_statement_deposit() {
+    public void print_statement_after_a_deposit_displays_the_operation_in_the_statement() {
         // Given
         Account account = new Account();
 
