@@ -43,4 +43,18 @@ public class AccountTest {
         // Then
         Assertions.assertThat(actualBalance).isEqualTo(1000);
     }
+
+    @Test
+    public void withdraw_an_amount_from_an_account_decreases_the_balance() {
+        // Given
+        Account account = new Account();
+
+        // When
+        account.deposit(500);
+        account.withdraw(300);
+        int actualBalance = account.getBalance();
+
+        // Then
+        Assertions.assertThat(actualBalance).isEqualTo(200);
+    }
 }
