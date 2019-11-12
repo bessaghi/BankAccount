@@ -11,7 +11,7 @@ public class Account {
 
     public Account() {
         balance = 0;
-        transactions = new Transactions();
+        transactions = Transactions.create();
     }
 
     public int getBalance() {

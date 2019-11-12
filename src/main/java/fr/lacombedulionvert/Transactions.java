@@ -1,7 +1,6 @@
 package fr.lacombedulionvert;
 
 import java.util.LinkedList;
-import java.util.stream.Collectors;
 
 public class Transactions {
 
@@ -9,9 +8,13 @@ public class Transactions {
 
     private LinkedList<String> transactions;
 
-    public Transactions() {
+    private Transactions() {
         transactions = new LinkedList<>();
         transactions.add(STATEMENT_HEADER);
+    }
+
+    public static Transactions create() {
+        return new Transactions();
     }
 
     public void add(Transaction transaction) {
@@ -19,6 +22,6 @@ public class Transactions {
     }
 
     public String printStatement() {
-        return transactions.stream().collect(Collectors.joining());
+        return String.join("", transactions);
     }
 }
