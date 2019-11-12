@@ -2,6 +2,8 @@ package fr.lacombedulionvert;
 
 public class Account {
 
+    private static final String STATEMENT_HEADER = "DATE \t | AMOUNT \t | BALANCE";
+
     private int balance;
 
     public Account() {
@@ -21,6 +23,6 @@ public class Account {
     }
 
     public String printStatement() {
-        return "DATE \t | AMOUNT \t | BALANCE";
+        return STATEMENT_HEADER;
     }
 }
