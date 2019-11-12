@@ -27,7 +27,8 @@ public class Transactions {
         transactions.addLast(transaction.toString());
     }
 
-    public String printStatement() {
+    @Override
+    public String toString() {
         return String.join(DELIMITER, transactions);
     }
 }

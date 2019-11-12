@@ -38,6 +38,6 @@ public class Account {
     }
 
     public String printStatement() {
-        return transactions.printStatement();
+        return transactions.toString();
     }
 }
