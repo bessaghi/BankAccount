@@ -32,17 +32,13 @@ public class Account {
     }
 
     private void addTransaction(int amount, Operation operation) {
-        transactions.add(operate(amount, operation));
-    }
-
-    private Transaction operate(int amount, Operation operation) {
         balance = operation.getFunction().apply(amount, balance);
-        return aTransaction()
+        transactions.add(aTransaction()
                 .withOperation(operation)
                 .withDate(LocalDate.now())
                 .withAmount(amount)
                 .withBalance(balance)
-                .build();
+                .build());
     }
 
     public String printStatement() {
