@@ -27,22 +27,21 @@ public class Account {
 
     public void deposit(int amount) {
         balance += amount;
-        transactions.add(aTransaction()
-                .withOperation(Operation.DEPOSIT)
-                .withDate(LocalDate.now())
-                .withAmount(amount)
-                .withBalance(balance)
-                .build());
+        transactions.add(operate(amount, Operation.DEPOSIT));
     }
 
     public void withdraw(int amount) {
         balance -= amount;
-        transactions.add(aTransaction()
-                .withOperation(Operation.WITHDRAWAL)
+        transactions.add(operate(amount, Operation.WITHDRAWAL));
+    }
+
+    private Transaction operate(int amount, Operation operation) {
+        return aTransaction()
+                .withOperation(operation)
                 .withDate(LocalDate.now())
                 .withAmount(amount)
                 .withBalance(balance)
-                .build());
+                .build();
     }
 
     public String printStatement() {
