@@ -24,7 +24,12 @@ public class Account {
     public void deposit(int amount) {
         balance += amount;
         LocalDate date = LocalDate.now();
-        transactions.add(new Transaction(Operation.DEPOSIT, date, amount, balance));
+        transactions.add(Transaction.Builder.aTransaction()
+                .withOperation(Operation.DEPOSIT)
+                .withDate(date)
+                .withAmount(amount)
+                .withBalance(balance)
+                .build());
     }
 
     public void withdraw(int amount) {
