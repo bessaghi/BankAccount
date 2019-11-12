@@ -3,6 +3,7 @@ package fr.lacombedulionvert;
 import java.time.LocalDate;
 
 import static fr.lacombedulionvert.Transaction.Builder.aTransaction;
+import static fr.lacombedulionvert.Transactions.create;
 
 public class Account {
 
@@ -11,7 +12,7 @@ public class Account {
 
     public Account() {
         balance = 0;
-        transactions = Transactions.create();
+        transactions = create();
     }
 
     public int getBalance() {
