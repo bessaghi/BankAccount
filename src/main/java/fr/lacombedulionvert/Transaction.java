@@ -17,8 +17,7 @@ public class Transaction {
 
     @Override
     public String toString() {
-        return "\n"
-                + date
+        return date
                 + " \t | "
                 + operation
                 + amount

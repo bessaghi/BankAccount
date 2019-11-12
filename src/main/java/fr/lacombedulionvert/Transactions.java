@@ -5,6 +5,7 @@ import java.util.LinkedList;
 public class Transactions {
 
     private static final String STATEMENT_HEADER = "DATE \t\t | AMOUNT \t | BALANCE";
+    private static final String DELIMITER = "\n";
 
     private LinkedList<String> transactions;
 
@@ -22,6 +23,6 @@ public class Transactions {
     }
 
     public String printStatement() {
-        return String.join("", transactions);
+        return String.join(DELIMITER, transactions);
     }
 }
