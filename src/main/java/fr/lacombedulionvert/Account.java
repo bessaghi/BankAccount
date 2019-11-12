@@ -37,7 +37,8 @@ public class Account {
                 .build());
     }
 
-    public String printStatement() {
+    @Override
+    public String toString() {
         return transactions.toString();
     }
 }

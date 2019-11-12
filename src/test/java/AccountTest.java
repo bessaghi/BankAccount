@@ -64,7 +64,7 @@ public class AccountTest {
         Account account = new Account();
 
         // When
-        String actualStatement = account.printStatement();
+        String actualStatement = account.toString();
 
         // Then
         Assertions.assertThat(actualStatement).isEqualTo("DATE \t\t | AMOUNT \t | BALANCE");
@@ -77,7 +77,7 @@ public class AccountTest {
 
         // When
         account.deposit(500);
-        String actualStatement = account.printStatement();
+        String actualStatement = account.toString();
 
         // Then
         Assertions.assertThat(actualStatement).isEqualTo("DATE \t\t | AMOUNT \t | BALANCE" +
@@ -92,7 +92,7 @@ public class AccountTest {
         // When
         account.deposit(500);
         account.deposit(200);
-        String actualStatement = account.printStatement();
+        String actualStatement = account.toString();
 
         // Then
         Assertions.assertThat(actualStatement).isEqualTo("DATE \t\t | AMOUNT \t | BALANCE" +
@@ -108,7 +108,7 @@ public class AccountTest {
         // When
         account.deposit(500);
         account.withdraw(200);
-        String actualStatement = account.printStatement();
+        String actualStatement = account.toString();
 
         // Then
         Assertions.assertThat(actualStatement).isEqualTo("DATE \t\t | AMOUNT \t | BALANCE" +
