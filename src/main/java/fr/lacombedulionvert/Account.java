@@ -11,10 +11,12 @@ public class Account {
 
     private int balance;
     private List<Transaction> transactions;
+    private Transactions transactions2;
 
     public Account() {
         balance = 0;
         transactions = new ArrayList<>();
+        transactions2 = new Transactions();
     }
 
     public int getBalance() {
