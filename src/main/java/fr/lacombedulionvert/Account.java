@@ -27,11 +27,11 @@ public class Account {
     }
 
     public void deposit(int amount) {
-        transactions.add(operate(amount, Operation.DEPOSIT, a -> balance = balance + a));
+        transactions.add(operate(amount, Operation.DEPOSIT, a -> balance += a));
     }
 
     public void withdraw(int amount) {
-        transactions.add(operate(amount, Operation.WITHDRAWAL, a -> balance = balance - a));
+        transactions.add(operate(amount, Operation.WITHDRAWAL, a -> balance -= a));
     }
 
     private Transaction operate(int amount, Operation operation, Consumer<Integer> function) {
