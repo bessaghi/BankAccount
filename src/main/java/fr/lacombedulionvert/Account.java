@@ -19,4 +19,8 @@ public class Account {
     public void withdraw(int amount) {
         balance -= amount;
     }
+
+    public String printStatement() {
+        return "DATE \t | AMOUNT \t | BALANCE";
+    }
 }

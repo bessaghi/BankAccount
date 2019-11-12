@@ -57,4 +57,16 @@ public class AccountTest {
         // Then
         Assertions.assertThat(actualBalance).isEqualTo(200);
     }
+
+    @Test
+    public void print_statement() {
+        // Given
+        Account account = new Account();
+
+        // When
+        String actualStatement = account.printStatement();
+
+        // Then
+        Assertions.assertThat(actualStatement).isEqualTo("DATE \t | AMOUNT \t | BALANCE");
+    }
 }
