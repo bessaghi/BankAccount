@@ -14,10 +14,13 @@ public class Transactions {
     }
 
     public static Transactions create() {
+        return new Transactions(initialize());
+    }
+
+    private static LinkedList<String> initialize() {
         LinkedList<String> transactions = new LinkedList<>();
         transactions.add(STATEMENT_HEADER);
-
-        return new Transactions(transactions);
+        return transactions;
     }
 
     public void add(Transaction transaction) {
