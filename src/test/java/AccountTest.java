@@ -15,4 +15,17 @@ public class AccountTest {
         // Then
         Assertions.assertThat(actualBalance).isEqualTo(0);
     }
+
+    @Test
+    public void deposit() {
+        // Given
+        Account account = new Account();
+
+        // When
+        account.deposit(500);
+        int actualBalance = account.getBalance();
+
+        // Then
+        Assertions.assertThat(actualBalance).isEqualTo(500);
+    }
 }
