@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static fr.lacombedulionvert.Transaction.Builder.aTransaction;
+
 public class Account {
 
     private static final String STATEMENT_HEADER = "DATE \t\t | AMOUNT \t | BALANCE";
@@ -25,7 +27,7 @@ public class Account {
 
     public void deposit(int amount) {
         balance += amount;
-        transactions.add(Transaction.Builder.aTransaction()
+        transactions.add(aTransaction()
                 .withOperation(Operation.DEPOSIT)
                 .withDate(LocalDate.now())
                 .withAmount(amount)
@@ -35,7 +37,7 @@ public class Account {
 
     public void withdraw(int amount) {
         balance -= amount;
-        transactions.add(Transaction.Builder.aTransaction()
+        transactions.add(aTransaction()
                 .withOperation(Operation.WITHDRAWAL)
                 .withDate(LocalDate.now())
                 .withAmount(amount)
