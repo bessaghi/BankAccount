@@ -67,7 +67,7 @@ public class AccountTest {
         String actualStatement = account.printStatement();
 
         // Then
-        Assertions.assertThat(actualStatement).isEqualTo("DATE \t | AMOUNT \t | BALANCE");
+        Assertions.assertThat(actualStatement).isEqualTo("DATE \t\t | AMOUNT \t | BALANCE");
     }
 
     @Test
@@ -80,7 +80,7 @@ public class AccountTest {
         String actualStatement = account.printStatement();
 
         // Then
-        Assertions.assertThat(actualStatement).isEqualTo("DATE \t | AMOUNT \t | BALANCE" +
+        Assertions.assertThat(actualStatement).isEqualTo("DATE \t\t | AMOUNT \t | BALANCE" +
                 "\n2019/11/12 \t | 500 \t | 500");
     }
 
@@ -95,7 +95,7 @@ public class AccountTest {
         String actualStatement = account.printStatement();
 
         // Then
-        Assertions.assertThat(actualStatement).isEqualTo("DATE \t | AMOUNT \t | BALANCE" +
+        Assertions.assertThat(actualStatement).isEqualTo("DATE \t\t | AMOUNT \t | BALANCE" +
                 "\n2019/11/12 \t | 500 \t | 500" +
                 "\n2019/11/12 \t | 200 \t | 700");
     }
@@ -111,7 +111,7 @@ public class AccountTest {
         String actualStatement = account.printStatement();
 
         // Then
-        Assertions.assertThat(actualStatement).isEqualTo("DATE \t | AMOUNT \t | BALANCE" +
+        Assertions.assertThat(actualStatement).isEqualTo("DATE \t\t | AMOUNT \t | BALANCE" +
                 "\n2019/11/12 \t | 500 \t | 500" +
                 "\n2019/11/12 \t | -200 \t | 300");
     }

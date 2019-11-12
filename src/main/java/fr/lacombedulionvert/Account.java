@@ -2,7 +2,7 @@ package fr.lacombedulionvert;
 
 public class Account {
 
-    private static final String STATEMENT_HEADER = "DATE \t | AMOUNT \t | BALANCE";
+    private static final String STATEMENT_HEADER = "DATE \t\t | AMOUNT \t | BALANCE";
 
     private int balance;
     private String statement;
