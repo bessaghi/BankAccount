@@ -14,4 +14,15 @@ public class Transaction {
         this.amount = amount;
         this.balance = balance;
     }
+
+    @Override
+    public String toString() {
+        return "\n"
+                + date
+                + " \t | "
+                + operation
+                + amount
+                + " \t | "
+                + balance;
+    }
 }
