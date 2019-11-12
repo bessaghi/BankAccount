@@ -69,4 +69,18 @@ public class AccountTest {
         // Then
         Assertions.assertThat(actualStatement).isEqualTo("DATE \t | AMOUNT \t | BALANCE");
     }
+
+    @Test
+    public void print_statement_deposit() {
+        // Given
+        Account account = new Account();
+
+        // When
+        account.deposit(500);
+        String actualStatement = account.printStatement();
+
+        // Then
+        Assertions.assertThat(actualStatement).isEqualTo("DATE \t | AMOUNT \t | BALANCE" +
+                "\n2019/11/12 \t | 500 \t | 500");
+    }
 }
