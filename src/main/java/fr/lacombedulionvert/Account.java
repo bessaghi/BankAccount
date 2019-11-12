@@ -9,12 +9,10 @@ public class Account {
     private static final String STATEMENT_HEADER = "DATE \t\t | AMOUNT \t | BALANCE";
 
     private int balance;
-    private String statement;
     private List<Transaction> transactions;
 
     public Account() {
         balance = 0;
-        statement = STATEMENT_HEADER;
         transactions = new ArrayList<>();
     }
 
@@ -35,6 +33,7 @@ public class Account {
     }
 
     public String printStatement() {
+        String statement = STATEMENT_HEADER;
         for (Transaction tr :  transactions){
             statement += tr.toString();
         }
