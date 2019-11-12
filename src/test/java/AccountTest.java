@@ -28,4 +28,19 @@ public class AccountTest {
         // Then
         Assertions.assertThat(actualBalance).isEqualTo(500);
     }
+
+    @Test
+    public void deposit_multiple_amounts_into_an_account_increases_the_balance_to_sum_of_all_amounts() {
+        // Given
+        Account account = new Account();
+
+        // When
+        account.deposit(500);
+        account.deposit(300);
+        account.deposit(200);
+        int actualBalance = account.getBalance();
+
+        // Then
+        Assertions.assertThat(actualBalance).isEqualTo(1000);
+    }
 }
