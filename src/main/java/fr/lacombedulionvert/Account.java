@@ -24,11 +24,15 @@ public class Account {
     }
 
     public void deposit(int amount) {
-        transactions.add(operate(amount, Operation.DEPOSIT));
+        addTransaction(amount, Operation.DEPOSIT);
     }
 
     public void withdraw(int amount) {
-        transactions.add(operate(amount, Operation.WITHDRAWAL));
+        addTransaction(amount, Operation.WITHDRAWAL);
+    }
+
+    private void addTransaction(int amount, Operation operation) {
+        transactions.add(operate(amount, operation));
     }
 
     private Transaction operate(int amount, Operation operation) {
