@@ -9,13 +9,15 @@ public class Transactions {
 
     private LinkedList<String> transactions;
 
-    private Transactions() {
-        transactions = new LinkedList<>();
-        transactions.add(STATEMENT_HEADER);
+    private Transactions(LinkedList<String> transactions) {
+        this.transactions = transactions;
     }
 
     public static Transactions create() {
-        return new Transactions();
+        LinkedList<String> transactions = new LinkedList<>();
+        transactions.add(STATEMENT_HEADER);
+
+        return new Transactions(transactions);
     }
 
     public void add(Transaction transaction) {
