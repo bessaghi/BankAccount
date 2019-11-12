@@ -6,8 +6,6 @@ import static fr.lacombedulionvert.Transaction.Builder.aTransaction;
 
 public class Account {
 
-    private static final String STATEMENT_HEADER = "DATE \t\t | AMOUNT \t | BALANCE";
-
     private int balance;
     private Transactions transactions;
 
