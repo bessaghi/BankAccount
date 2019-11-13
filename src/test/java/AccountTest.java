@@ -8,12 +8,12 @@ import java.time.LocalDate;
 public class AccountTest {
 
     private Account account;
-    private String date;
+    private LocalDate date;
 
     @BeforeEach
     void setUp() {
         account = new Account();
-        date = LocalDate.now().toString();
+        date = LocalDate.now();
     }
 
     @Test
