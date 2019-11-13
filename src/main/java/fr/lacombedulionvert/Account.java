@@ -1,7 +1,5 @@
 package fr.lacombedulionvert;
 
-import java.time.LocalDate;
-
 import static fr.lacombedulionvert.Transaction.Builder.aTransaction;
 import static fr.lacombedulionvert.Transactions.create;
 
@@ -33,7 +31,6 @@ public class Account {
         balance = operation.getFunction().apply(amount, balance);
         transactions.add(aTransaction()
                 .withOperation(operation)
-                .withDate(LocalDate.now())
                 .withAmount(amount)
                 .withBalance(balance)
                 .build());
