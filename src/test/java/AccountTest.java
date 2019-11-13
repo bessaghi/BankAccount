@@ -3,13 +3,17 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.time.LocalDate;
+
 public class AccountTest {
 
     private Account account;
+    private String date;
 
     @BeforeEach
     void setUp() {
         account = new Account();
+        date = LocalDate.now().toString();
     }
 
     @Test
@@ -71,7 +75,7 @@ public class AccountTest {
 
         // Then
         Assertions.assertThat(actualStatement).isEqualTo("DATE \t\t | AMOUNT \t | BALANCE" +
-                "\n2019-11-13 \t | 500 \t | 500");
+                "\n" + date + " \t | 500 \t | 500");
     }
 
     @Test
@@ -83,8 +87,8 @@ public class AccountTest {
 
         // Then
         Assertions.assertThat(actualStatement).isEqualTo("DATE \t\t | AMOUNT \t | BALANCE" +
-                "\n2019-11-13 \t | 500 \t | 500" +
-                "\n2019-11-13 \t | 200 \t | 700");
+                "\n" + date + " \t | 500 \t | 500" +
+                "\n" + date + " \t | 200 \t | 700");
     }
 
     @Test
@@ -96,7 +100,7 @@ public class AccountTest {
 
         // Then
         Assertions.assertThat(actualStatement).isEqualTo("DATE \t\t | AMOUNT \t | BALANCE" +
-                "\n2019-11-13 \t | 500 \t | 500" +
-                "\n2019-11-13 \t | -200 \t | 300");
+                "\n" + date + " \t | 500 \t | 500" +
+                "\n" + date + " \t | -200 \t | 300");
     }
 }
