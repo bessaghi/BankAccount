@@ -13,7 +13,7 @@ class TransactionsTest {
         transactions.add(aTransaction()
                 .withOperation(Operation.DEPOSIT)
                 .withAmount(500)
-                .withBalance(0)
+                .withBalance(500)
                 .build());
 
         Assertions.assertThat(transactions.getLatestBalance()).isEqualTo(500);
