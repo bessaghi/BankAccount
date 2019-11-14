@@ -6,29 +6,22 @@ public class Account {
 
     private static final String STATEMENT_HEADER = "DATE \t\t | AMOUNT \t | BALANCE\n";
 
-    private int balance;
     private Transactions transactions;
 
     public Account() {
-        balance = 0;
         transactions = create();
     }
 
-    public int getBalance() {
-        return balance;
-    }
-
     public void deposit(int amount) {
-        addTransaction(amount, Operation.DEPOSIT);
+        transactions.add(Operation.DEPOSIT, amount);
     }
 
     public void withdraw(int amount) {
-        addTransaction(amount, Operation.WITHDRAWAL);
+        transactions.add(Operation.WITHDRAWAL, amount);
     }
 
-    private void addTransaction(int amount, Operation operation) {
-        balance = operation.getFunction().apply(amount, balance);
-        transactions.add(operation, amount);
+    public int getBalance() {
+        return transactions.getLatestBalance();
     }
 
     @Override

@@ -19,10 +19,6 @@ public class Transactions {
         return new Transactions();
     }
 
-    public void add(Transaction transaction) {
-        transactions.addLast(transaction);
-    }
-
     public void add(Operation operation, int amount) {
         transactions.addLast(aTransaction()
                 .withOperation(operation)
@@ -31,8 +27,12 @@ public class Transactions {
                 .build());
     }
 
-    private Integer calculateBalance(Operation operation, int amount) {
+    private int calculateBalance(Operation operation, int amount) {
         return operation.getFunction().apply(amount, getLatestBalance());
+    }
+
+    public int getLatestBalance() {
+        return transactions.isEmpty() ? 0 : transactions.getLast().getBalance();
     }
 
     @Override
@@ -40,9 +40,5 @@ public class Transactions {
         return transactions.stream()
                 .map(Transaction::toString)
                 .collect(Collectors.joining(DELIMITER));
-    }
-
-    public int getLatestBalance() {
-        return transactions.isEmpty() ? 0 : transactions.getLast().getBalance();
     }
 }
