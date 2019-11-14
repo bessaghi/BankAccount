@@ -28,7 +28,7 @@ public class Transactions {
         return operation.applyFunction(amount, getLatestBalance());
     }
 
-    public int getLatestBalance() {
+    private int getLatestBalance() {
         if (transactions.isEmpty()) {
             return 0;
         }
