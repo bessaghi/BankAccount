@@ -14,8 +14,8 @@ public enum Operation {
         this.function = function;
     }
 
-    BinaryOperator<Integer> getFunction() {
-        return function;
+    int applyFunction(int amount, int balance) {
+        return function.apply(amount, balance);
     }
 
     @Override

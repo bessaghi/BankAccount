@@ -28,7 +28,7 @@ public class Transactions {
     }
 
     private int calculateBalance(Operation operation, int amount) {
-        return operation.getFunction().apply(amount, getLatestBalance());
+        return operation.applyFunction(amount, getLatestBalance());
     }
 
     public int getLatestBalance() {
