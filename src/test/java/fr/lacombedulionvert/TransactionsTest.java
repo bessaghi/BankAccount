@@ -3,23 +3,13 @@ package fr.lacombedulionvert;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import static fr.lacombedulionvert.Transaction.Builder.aTransaction;
-
 class TransactionsTest {
 
     @Test
     void latest_balance_is_the_balance_calculated_after_the_last_operation() {
         Transactions transactions = Transactions.create();
-        transactions.add(aTransaction()
-                .withOperation(Operation.DEPOSIT)
-                .withAmount(500)
-                .withBalance(500)
-                .build());
-        transactions.add(aTransaction()
-                .withOperation(Operation.DEPOSIT)
-                .withAmount(500)
-                .withBalance(1000)
-                .build());
+        transactions.add(Operation.DEPOSIT, 500);
+        transactions.add(Operation.DEPOSIT, 500);
 
         Assertions.assertThat(transactions.getLatestBalance()).isEqualTo(1000);
 
