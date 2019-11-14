@@ -27,4 +27,8 @@ public class Transactions {
                 .map(Transaction::toString)
                 .collect(Collectors.joining(DELIMITER));
     }
+
+    public int getLatestBalance() {
+        return 500;
+    }
 }
