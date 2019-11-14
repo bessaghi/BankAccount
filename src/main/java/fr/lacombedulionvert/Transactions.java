@@ -1,30 +1,27 @@
 package fr.lacombedulionvert;
 
 import java.util.LinkedList;
-import java.util.stream.Collectors;
 
-import static fr.lacombedulionvert.Transaction.Builder.aTransaction;
+import static fr.lacombedulionvert.Transaction.print;
+import static java.lang.String.join;
 
 public class Transactions {
 
     private static final String DELIMITER = "\n";
 
-    private LinkedList<Transaction> transactions;
+    private LinkedList<String> transactions;
 
     private Transactions() {
-        this.transactions = new LinkedList<>();
+        transactions = new LinkedList<>();
     }
 
-    public static Transactions create() {
+    public static Transactions initialize() {
         return new Transactions();
     }
 
     public void add(Operation operation, int amount) {
-        transactions.addLast(aTransaction()
-                .withOperation(operation)
-                .withAmount(amount)
-                .withBalance(calculateBalance(operation, amount))
-                .build());
+        int balance = calculateBalance(operation, amount);
+        transactions.addLast(print(operation, amount) + balance);
     }
 
     private int calculateBalance(Operation operation, int amount) {
@@ -32,13 +29,15 @@ public class Transactions {
     }
 
     public int getLatestBalance() {
-        return transactions.isEmpty() ? 0 : transactions.getLast().getBalance();
+        if (transactions.isEmpty()) {
+            return 0;
+        }
+        String[] elements = transactions.getLast().split(" ");
+        return Integer.valueOf(elements[elements.length - 1]);
     }
 
     @Override
     public String toString() {
-        return transactions.stream()
-                .map(Transaction::toString)
-                .collect(Collectors.joining(DELIMITER));
+        return join(DELIMITER, transactions);
     }
 }
