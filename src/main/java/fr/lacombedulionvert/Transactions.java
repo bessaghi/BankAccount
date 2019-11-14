@@ -29,6 +29,6 @@ public class Transactions {
     }
 
     public int getLatestBalance() {
-        return 500;
+        return transactions.getLast().getBalance();
     }
 }

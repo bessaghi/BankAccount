@@ -15,8 +15,13 @@ class TransactionsTest {
                 .withAmount(500)
                 .withBalance(500)
                 .build());
+        transactions.add(aTransaction()
+                .withOperation(Operation.DEPOSIT)
+                .withAmount(500)
+                .withBalance(1000)
+                .build());
 
-        Assertions.assertThat(transactions.getLatestBalance()).isEqualTo(500);
+        Assertions.assertThat(transactions.getLatestBalance()).isEqualTo(1000);
 
     }
 }

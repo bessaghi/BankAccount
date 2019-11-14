@@ -25,6 +25,10 @@ public class Transaction {
                 + balance;
     }
 
+    public int getBalance() {
+        return balance;
+    }
+
     public static final class Builder {
         private Operation operation;
         private int amount;
