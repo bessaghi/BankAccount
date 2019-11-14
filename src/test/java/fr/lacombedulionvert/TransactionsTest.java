@@ -8,7 +8,7 @@ import static fr.lacombedulionvert.Transaction.Builder.aTransaction;
 class TransactionsTest {
 
     @Test
-    void name() {
+    void latest_balance_is_the_balance_calculated_after_the_last_operation() {
         Transactions transactions = Transactions.create();
         transactions.add(aTransaction()
                 .withOperation(Operation.DEPOSIT)
