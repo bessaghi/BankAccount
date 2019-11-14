@@ -13,50 +13,8 @@ public class AccountTest {
 
     @BeforeEach
     void setUp() {
-        account = new Account();
+        account = Account.create();
         date = LocalDate.now();
-    }
-
-    @Test
-    public void new_account_has_empty_balance() {
-        // When
-        int actualBalance = account.getBalance();
-
-        // Then
-        Assertions.assertThat(actualBalance).isEqualTo(0);
-    }
-
-    @Test
-    public void deposit_an_amount_into_an_account_increases_the_balance() {
-        // When
-        account.deposit(500);
-        int actualBalance = account.getBalance();
-
-        // Then
-        Assertions.assertThat(actualBalance).isEqualTo(500);
-    }
-
-    @Test
-    public void deposit_multiple_amounts_into_an_account_increases_the_balance_to_sum_of_all_amounts() {
-       // When
-        account.deposit(500);
-        account.deposit(300);
-        account.deposit(200);
-        int actualBalance = account.getBalance();
-
-        // Then
-        Assertions.assertThat(actualBalance).isEqualTo(1000);
-    }
-
-    @Test
-    public void withdraw_an_amount_from_an_account_decreases_the_balance() {
-       // When
-        account.deposit(500);
-        account.withdraw(300);
-        int actualBalance = account.getBalance();
-
-        // Then
-        Assertions.assertThat(actualBalance).isEqualTo(200);
     }
 
     @Test
@@ -69,7 +27,7 @@ public class AccountTest {
     }
 
     @Test
-    public void print_statement_after_a_deposit_displays_the_operation_in_the_statement() {
+    public void print_statement_after_a_deposit_displays_the_operation_in_the_statement_with_balance_equaling_amount() {
        // When
         account.deposit(500);
         String actualStatement = account.toString();
@@ -80,7 +38,7 @@ public class AccountTest {
     }
 
     @Test
-    public void print_statement_after_multiple_deposits_displays_the_operations_in_the_statement() {
+    public void print_statement_after_multiple_deposits_displays_the_operations_in_the_statement_with_balance_equaling_the_sum_of_all_previous_amounts_deposed() {
        // When
         account.deposit(500);
         account.deposit(200);
@@ -93,7 +51,7 @@ public class AccountTest {
     }
 
     @Test
-    public void print_statement_after_a_deposit_and_a_withdrawal_displays_the_operations_in_the_statement() {
+    public void print_statement_after_a_deposit_and_a_withdrawal_displays_the_operations_in_the_statement_with_balance_decreasing_after_withdrawal() {
        // When
         account.deposit(500);
         account.withdraw(200);

@@ -1,6 +1,6 @@
 package fr.lacombedulionvert;
 
-import static fr.lacombedulionvert.Transactions.create;
+import static fr.lacombedulionvert.Transactions.initialize;
 
 public class Account {
 
@@ -8,8 +8,12 @@ public class Account {
 
     private Transactions transactions;
 
-    public Account() {
-        transactions = create();
+    private Account() {
+        transactions = initialize();
+    }
+
+    public static Account create() {
+        return new Account();
     }
 
     public void deposit(int amount) {
@@ -18,10 +22,6 @@ public class Account {
 
     public void withdraw(int amount) {
         transactions.add(Operation.WITHDRAWAL, amount);
-    }
-
-    public int getBalance() {
-        return transactions.getLatestBalance();
     }
 
     @Override
