@@ -3,6 +3,8 @@ package fr.lacombedulionvert;
 import java.util.LinkedList;
 import java.util.stream.Collectors;
 
+import static fr.lacombedulionvert.Transaction.Builder.aTransaction;
+
 public class Transactions {
 
     private static final String DELIMITER = "\n";
@@ -21,6 +23,18 @@ public class Transactions {
         transactions.addLast(transaction);
     }
 
+    public void add(Operation operation, int amount) {
+        transactions.addLast(aTransaction()
+                .withOperation(operation)
+                .withAmount(amount)
+                .withBalance(calculateBalance(operation, amount))
+                .build());
+    }
+
+    private Integer calculateBalance(Operation operation, int amount) {
+        return operation.getFunction().apply(amount, getLatestBalance());
+    }
+
     @Override
     public String toString() {
         return transactions.stream()
@@ -29,6 +43,6 @@ public class Transactions {
     }
 
     public int getLatestBalance() {
-        return transactions.getLast().getBalance();
+        return transactions.isEmpty() ? 0 : transactions.getLast().getBalance();
     }
 }

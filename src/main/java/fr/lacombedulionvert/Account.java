@@ -1,6 +1,5 @@
 package fr.lacombedulionvert;
 
-import static fr.lacombedulionvert.Transaction.Builder.aTransaction;
 import static fr.lacombedulionvert.Transactions.create;
 
 public class Account {
@@ -29,11 +28,7 @@ public class Account {
 
     private void addTransaction(int amount, Operation operation) {
         balance = operation.getFunction().apply(amount, balance);
-        transactions.add(aTransaction()
-                .withOperation(operation)
-                .withAmount(amount)
-                .withBalance(balance)
-                .build());
+        transactions.add(operation, amount);
     }
 
     @Override
