@@ -1,18 +1,17 @@
 package fr.lacombedulionvert;
 
-import java.util.LinkedList;
-
-import static fr.lacombedulionvert.Transaction.print;
-import static java.lang.String.join;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 public class Transactions {
 
     private static final String DELIMITER = "\n";
 
-    private LinkedList<String> transactions;
+    private Map<Transaction, Integer> transactions;
 
     private Transactions() {
-        transactions = new LinkedList<>();
+        transactions = new HashMap<>();
     }
 
     public static Transactions initialize() {
@@ -20,8 +19,8 @@ public class Transactions {
     }
 
     public void add(Operation operation, int amount) {
-        int balance = calculateBalance(operation, amount);
-        transactions.addLast(print(operation, amount) + balance);
+        transactions.put(Transaction.of(operation, amount),
+                calculateBalance(operation, amount));
     }
 
     private int calculateBalance(Operation operation, int amount) {
@@ -29,15 +28,18 @@ public class Transactions {
     }
 
     private int getLatestBalance() {
-        if (transactions.isEmpty()) {
-            return 0;
-        }
-        String[] elements = transactions.getLast().split(" ");
-        return Integer.valueOf(elements[elements.length - 1]);
+        return transactions.isEmpty() ? 0
+                : transactions.values().stream()
+                .skip(transactions.values().size() - 1)
+                .findFirst()
+                .get();
     }
 
     @Override
     public String toString() {
-        return join(DELIMITER, transactions);
+        return transactions.entrySet()
+                .stream()
+                .map(e -> e.getKey().toString() + e.getValue())
+                .collect(Collectors.joining(DELIMITER));
     }
 }

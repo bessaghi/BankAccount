@@ -15,8 +15,8 @@ public class Transaction {
         this.amount = amount;
     }
 
-    public static String print(Operation operation, int amount) {
-        return new Transaction(operation, amount).toString();
+    public static Transaction of(Operation operation, int amount) {
+        return new Transaction(operation, amount);
     }
 
     @Override
