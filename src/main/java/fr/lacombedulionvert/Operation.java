@@ -14,8 +14,8 @@ public enum Operation {
         this.function = function;
     }
 
-    int applyFunction(int amount, int balance) {
-        return function.apply(amount, balance);
+    int calculateBalance(int amount, int previousBalance) {
+        return function.apply(amount, previousBalance);
     }
 
     @Override

@@ -1,6 +1,6 @@
 package fr.lacombedulionvert;
 
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.stream.Collectors;
 
@@ -11,7 +11,7 @@ public class Transactions {
     private Map<Transaction, Integer> transactions;
 
     private Transactions() {
-        transactions = new HashMap<>();
+        transactions = new LinkedHashMap<>();
     }
 
     public static Transactions initialize() {
@@ -20,19 +20,18 @@ public class Transactions {
 
     public void add(Operation operation, int amount) {
         transactions.put(Transaction.of(operation, amount),
-                calculateBalance(operation, amount));
+                getResultingBalance(operation, amount));
     }
 
-    private int calculateBalance(Operation operation, int amount) {
-        return operation.applyFunction(amount, getLatestBalance());
+    private int getResultingBalance(Operation operation, int amount) {
+        return operation.calculateBalance(amount, getLatestBalance());
     }
 
     private int getLatestBalance() {
-        return transactions.isEmpty() ? 0
-                : transactions.values().stream()
-                .skip(transactions.values().size() - 1)
-                .findFirst()
-                .get();
+        return transactions.values()
+                .stream()
+                .reduce((a, b) -> b)
+                .orElse(0);
     }
 
     @Override

@@ -1,7 +1,5 @@
 package fr.lacombedulionvert;
 
-import static fr.lacombedulionvert.Transactions.initialize;
-
 public class Account {
 
     private static final String STATEMENT_HEADER = "DATE \t\t | AMOUNT \t | BALANCE\n";
@@ -9,7 +7,7 @@ public class Account {
     private Transactions transactions;
 
     private Account() {
-        transactions = initialize();
+        transactions = Transactions.initialize();
     }
 
     public static Account create() {
