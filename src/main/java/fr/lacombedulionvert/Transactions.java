@@ -20,10 +20,10 @@ public class Transactions {
 
     public void add(Operation operation, int amount) {
         transactions.put(Transaction.of(operation, amount),
-                getResultingBalance(operation, amount));
+                getActualBalance(operation, amount));
     }
 
-    private int getResultingBalance(Operation operation, int amount) {
+    private int getActualBalance(Operation operation, int amount) {
         return operation.calculateActualBalance(amount, getLatestBalance());
     }
 
