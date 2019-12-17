@@ -1,10 +1,11 @@
 package fr.lacombedulionvert;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class AccountTest {
 
@@ -23,7 +24,9 @@ public class AccountTest {
         String actualStatement = account.toString();
 
         // Then
-        Assertions.assertThat(actualStatement).isEqualTo("DATE \t\t | AMOUNT \t | BALANCE\n");
+        assertThat(actualStatement).isEqualTo(
+                "DATE \t\t | AMOUNT \t | BALANCE\n"
+        );
     }
 
     @Test
@@ -33,8 +36,10 @@ public class AccountTest {
         String actualStatement = account.toString();
 
         // Then
-        Assertions.assertThat(actualStatement).isEqualTo("DATE \t\t | AMOUNT \t | BALANCE" +
-                "\n" + date + " \t | +500 \t | 500");
+        assertThat(actualStatement).isEqualTo(
+                "DATE \t\t | AMOUNT \t | BALANCE" +
+                "\n" + date + " \t | +500 \t | 500"
+        );
     }
 
     @Test
@@ -45,9 +50,11 @@ public class AccountTest {
         String actualStatement = account.toString();
 
         // Then
-        Assertions.assertThat(actualStatement).isEqualTo("DATE \t\t | AMOUNT \t | BALANCE" +
+        assertThat(actualStatement).isEqualTo(
+                "DATE \t\t | AMOUNT \t | BALANCE" +
                 "\n" + date + " \t | +500 \t | 500" +
-                "\n" + date + " \t | +200 \t | 700");
+                "\n" + date + " \t | +200 \t | 700"
+        );
     }
 
     @Test
@@ -58,8 +65,10 @@ public class AccountTest {
         String actualStatement = account.toString();
 
         // Then
-        Assertions.assertThat(actualStatement).isEqualTo("DATE \t\t | AMOUNT \t | BALANCE" +
+        assertThat(actualStatement).isEqualTo(
+                "DATE \t\t | AMOUNT \t | BALANCE" +
                 "\n" + date + " \t | +500 \t | 500" +
-                "\n" + date + " \t | -200 \t | 300");
+                "\n" + date + " \t | -200 \t | 300"
+        );
     }
 }
