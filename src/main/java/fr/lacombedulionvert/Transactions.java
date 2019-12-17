@@ -30,8 +30,7 @@ public class Transactions {
     private int getLatestBalance() {
         return transactions.values()
                 .stream()
-                .reduce((a, b) -> b)
-                .orElse(0);
+                .reduce(0, (a, b) -> b);
     }
 
     @Override
