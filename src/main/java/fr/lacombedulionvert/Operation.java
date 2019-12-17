@@ -14,7 +14,7 @@ public enum Operation {
         this.function = function;
     }
 
-    int calculateBalance(int amount, int previousBalance) {
+    int calculateActualBalance(int amount, int previousBalance) {
         return function.apply(amount, previousBalance);
     }
 
