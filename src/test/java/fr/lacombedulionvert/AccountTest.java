@@ -21,7 +21,7 @@ public class AccountTest {
     @Test
     public void print_statement_for_a_new_account_prints_only_the_header() {
        // When
-        String actualStatement = account.toString();
+        String actualStatement = account.printStatement();
 
         // Then
         assertThat(actualStatement).isEqualTo(
@@ -33,7 +33,7 @@ public class AccountTest {
     public void print_statement_after_a_deposit_displays_the_operation_in_the_statement_with_balance_equaling_amount() {
        // When
         account.deposit(500);
-        String actualStatement = account.toString();
+        String actualStatement = account.printStatement();
 
         // Then
         assertThat(actualStatement).isEqualTo(
@@ -47,7 +47,7 @@ public class AccountTest {
        // When
         account.deposit(500);
         account.deposit(200);
-        String actualStatement = account.toString();
+        String actualStatement = account.printStatement();
 
         // Then
         assertThat(actualStatement).isEqualTo(
@@ -62,7 +62,7 @@ public class AccountTest {
        // When
         account.deposit(500);
         account.withdraw(200);
-        String actualStatement = account.toString();
+        String actualStatement = account.printStatement();
 
         // Then
         assertThat(actualStatement).isEqualTo(

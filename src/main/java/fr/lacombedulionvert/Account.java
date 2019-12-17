@@ -22,8 +22,7 @@ public class Account {
         transactions.add(Operation.WITHDRAWAL, amount);
     }
 
-    @Override
-    public String toString() {
+    public String printStatement() {
         return STATEMENT_HEADER + transactions;
     }
 }
