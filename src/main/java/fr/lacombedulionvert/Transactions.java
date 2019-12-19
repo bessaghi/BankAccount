@@ -2,7 +2,8 @@ package fr.lacombedulionvert;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
-import java.util.stream.Collectors;
+
+import static java.util.stream.Collectors.joining;
 
 class Transactions {
 
@@ -28,7 +29,7 @@ class Transactions {
     private int getLatestBalance() {
         return transactions.values()
                 .stream()
-                .reduce(0, (a, b) -> b);
+                .reduce(0, (first, second) -> second);
     }
 
     @Override
@@ -36,6 +37,6 @@ class Transactions {
         return transactions.entrySet()
                 .stream()
                 .map(e -> e.getKey().toString() + e.getValue())
-                .collect(Collectors.joining(DELIMITER));
+                .collect(joining(DELIMITER));
     }
 }
