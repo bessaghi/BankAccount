@@ -4,23 +4,21 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-public class Transactions {
+class Transactions {
 
     private static final String DELIMITER = "\n";
 
     private Map<Transaction, Integer> transactions;
 
-    private Transactions() {
+    Transactions() {
         transactions = new LinkedHashMap<>();
     }
 
-    public static Transactions initialize() {
-        return new Transactions();
-    }
-
-    public void add(Operation operation, int amount) {
-        transactions.put(Transaction.of(operation, amount),
-                getActualBalance(operation, amount));
+    void add(Operation operation, int amount) {
+        transactions.put(
+                new Transaction(operation, amount),
+                getActualBalance(operation, amount)
+        );
     }
 
     private int getActualBalance(Operation operation, int amount) {

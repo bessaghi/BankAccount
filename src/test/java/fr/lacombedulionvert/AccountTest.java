@@ -14,7 +14,7 @@ public class AccountTest {
 
     @BeforeEach
     void setUp() {
-        account = Account.create();
+        account = new Account();
         date = LocalDate.now();
     }
 

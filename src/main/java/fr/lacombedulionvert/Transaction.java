@@ -2,21 +2,17 @@ package fr.lacombedulionvert;
 
 import java.time.LocalDate;
 
-public class Transaction {
+class Transaction {
     private static final String SEPARATOR = " \t | ";
 
     private final Operation operation;
     private final LocalDate date;
     private final int amount;
 
-    private Transaction(Operation operation, int amount) {
+    Transaction(Operation operation, int amount) {
         this.operation = operation;
-        this.date = LocalDate.now();
         this.amount = amount;
-    }
-
-    public static Transaction of(Operation operation, int amount) {
-        return new Transaction(operation, amount);
+        this.date = LocalDate.now();
     }
 
     @Override

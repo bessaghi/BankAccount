@@ -2,7 +2,7 @@ package fr.lacombedulionvert;
 
 import java.util.function.BinaryOperator;
 
-public enum Operation {
+enum Operation {
     DEPOSIT("+", (a, b) -> b + a),
     WITHDRAWAL("-", (a, b) -> b - a);
 
