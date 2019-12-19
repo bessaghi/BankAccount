@@ -4,7 +4,7 @@ import java.time.Clock;
 import java.time.LocalDate;
 import java.time.ZoneId;
 
-import static fr.lacombedulionvert.Transaction.operate;
+import static fr.lacombedulionvert.Transaction.Builder.aTransaction;
 
 class Account {
 
@@ -27,7 +27,12 @@ class Account {
     }
 
     private void addTransaction(Operation operation, int amount) {
-        transactions.add(operate(operation, amount, LocalDate.now(clock)));
+        transactions.add(aTransaction()
+                .withOperation(operation)
+                .withAmount(amount)
+                .withDate(LocalDate.now(clock))
+                .build()
+        );
     }
 
     String printStatement() {

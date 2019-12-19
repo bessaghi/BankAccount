@@ -15,10 +15,6 @@ class Transaction {
         this.date = date;
     }
 
-    static Transaction operate(Operation operation, int amount, LocalDate date) {
-        return new Transaction(operation, amount, date);
-    }
-
     int calculateBalance(int latestBalance) {
         return operation.calculateCurrentBalance(amount, latestBalance);
     }
@@ -30,5 +26,34 @@ class Transaction {
                 + operation
                 + amount
                 + SEPARATOR;
+    }
+
+    static final class Builder {
+        private Operation operation;
+        private int amount;
+        private LocalDate date;
+
+        static Builder aTransaction() {
+            return new Builder();
+        }
+
+        Builder withOperation(Operation operation) {
+            this.operation = operation;
+            return this;
+        }
+
+        Builder withAmount(int amount) {
+            this.amount = amount;
+            return this;
+        }
+
+        Builder withDate(LocalDate date) {
+            this.date = date;
+            return this;
+        }
+
+        Transaction build() {
+            return new Transaction(operation, amount, date);
+        }
     }
 }
