@@ -10,22 +10,16 @@ class Transactions {
     private static final String DELIMITER = "\n";
 
     private Map<Transaction, Integer> transactions;
+    private int latestBalance;
 
     Transactions() {
         transactions = new LinkedHashMap<>();
+        latestBalance = 0;
     }
 
     void add(Transaction transaction) {
-        transactions.put(
-                transaction,
-                transaction.calculateBalance(getLatestBalance())
-        );
-    }
-
-    private int getLatestBalance() {
-        return transactions.values()
-                .stream()
-                .reduce(0, (first, second) -> second);
+        latestBalance = transaction.calculateBalance(latestBalance);
+        transactions.put(transaction, latestBalance);
     }
 
     @Override
