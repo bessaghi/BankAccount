@@ -17,12 +17,12 @@ class Transactions {
     void add(Operation operation, int amount) {
         transactions.put(
                 new Transaction(operation, amount),
-                getActualBalance(operation, amount)
+                getCurrentBalance(operation, amount)
         );
     }
 
-    private int getActualBalance(Operation operation, int amount) {
-        return operation.calculateActualBalance(amount, getLatestBalance());
+    private int getCurrentBalance(Operation operation, int amount) {
+        return operation.calculateCurrentBalance(amount, getLatestBalance());
     }
 
     private int getLatestBalance() {
