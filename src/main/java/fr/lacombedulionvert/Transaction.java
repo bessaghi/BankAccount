@@ -6,17 +6,17 @@ class Transaction {
     private static final String SEPARATOR = " \t | ";
 
     private final Operation operation;
-    private final LocalDate date;
     private final int amount;
+    private final LocalDate date;
 
-    private Transaction(Operation operation, int amount) {
+    private Transaction(Operation operation, int amount, LocalDate date) {
         this.operation = operation;
         this.amount = amount;
-        this.date = LocalDate.now();
+        this.date = date;
     }
 
-    static Transaction operate(Operation operation, int amount) {
-        return new Transaction(operation, amount);
+    static Transaction operate(Operation operation, int amount, LocalDate date) {
+        return new Transaction(operation, amount, date);
     }
 
     int calculateBalance(int latestBalance) {

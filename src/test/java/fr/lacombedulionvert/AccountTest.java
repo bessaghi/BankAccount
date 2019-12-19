@@ -2,20 +2,37 @@ package fr.lacombedulionvert;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 
+import java.time.Clock;
 import java.time.LocalDate;
+import java.time.ZoneId;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.Mockito.doReturn;
 
 public class AccountTest {
 
+    private final static LocalDate LOCAL_DATE = LocalDate.of(2019, 12, 13);
+
+    @InjectMocks
     private Account account;
-    private LocalDate date;
+
+    @Mock
+    private Clock clock;
 
     @BeforeEach
     void setUp() {
         account = new Account();
-        date = LocalDate.now();
+
+        MockitoAnnotations.initMocks(this);
+
+        //tell your tests to return the specified LOCAL_DATE when calling LocalDate.now(clock)
+        Clock fixedClock = Clock.fixed(LOCAL_DATE.atStartOfDay(ZoneId.systemDefault()).toInstant(), ZoneId.systemDefault());
+        doReturn(fixedClock.instant()).when(clock).instant();
+        doReturn(fixedClock.getZone()).when(clock).getZone();
     }
 
     @Test
@@ -38,7 +55,7 @@ public class AccountTest {
         // Then
         assertThat(actualStatement).isEqualTo(
                 "DATE \t\t | AMOUNT \t | BALANCE" +
-                "\n" + date + " \t | +500 \t | 500"
+                "\n2019-12-13 \t | +500 \t | 500"
         );
     }
 
@@ -52,8 +69,8 @@ public class AccountTest {
         // Then
         assertThat(actualStatement).isEqualTo(
                 "DATE \t\t | AMOUNT \t | BALANCE" +
-                "\n" + date + " \t | +500 \t | 500" +
-                "\n" + date + " \t | +200 \t | 700"
+                "\n2019-12-13 \t | +500 \t | 500" +
+                "\n2019-12-13 \t | +200 \t | 700"
         );
     }
 
@@ -67,8 +84,8 @@ public class AccountTest {
         // Then
         assertThat(actualStatement).isEqualTo(
                 "DATE \t\t | AMOUNT \t | BALANCE" +
-                "\n" + date + " \t | +500 \t | 500" +
-                "\n" + date + " \t | -200 \t | 300"
+                "\n2019-12-13 \t | +500 \t | 500" +
+                "\n2019-12-13 \t | -200 \t | 300"
         );
     }
 }
