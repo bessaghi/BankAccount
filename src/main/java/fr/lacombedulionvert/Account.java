@@ -1,8 +1,6 @@
 package fr.lacombedulionvert;
 
-import java.time.Clock;
 import java.time.LocalDate;
-import java.time.ZoneId;
 
 import static fr.lacombedulionvert.Transaction.Builder.aTransaction;
 
@@ -11,11 +9,11 @@ class Account {
     private static final String STATEMENT_HEADER = "DATE \t\t | AMOUNT \t | BALANCE\n";
 
     private Transactions transactions;
-    private Clock clock;
+    private Date date;
 
     Account() {
         transactions = new Transactions();
-        clock = Clock.system(ZoneId.systemDefault());
+        date = LocalDate::now;
     }
 
     void deposit(int amount) {
@@ -30,7 +28,7 @@ class Account {
         transactions.add(aTransaction()
                 .withOperation(operation)
                 .withAmount(amount)
-                .withDate(LocalDate.now(clock))
+                .withDate(date.getDate())
                 .build()
         );
     }

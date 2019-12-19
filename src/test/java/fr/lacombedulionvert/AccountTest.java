@@ -4,16 +4,14 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
 
-import java.time.Clock;
 import java.time.LocalDate;
-import java.time.ZoneId;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.Mockito.doReturn;
+import static org.mockito.Mockito.when;
+import static org.mockito.MockitoAnnotations.initMocks;
 
-public class AccountTest {
+class AccountTest {
 
     private final static LocalDate LOCAL_DATE = LocalDate.of(2019, 12, 13);
 
@@ -21,21 +19,18 @@ public class AccountTest {
     private Account account;
 
     @Mock
-    private Clock clock;
+    private Date date;
 
     @BeforeEach
     void setUp() {
         account = new Account();
 
-        MockitoAnnotations.initMocks(this);
-
-        Clock fixedClock = Clock.fixed(LOCAL_DATE.atStartOfDay(ZoneId.systemDefault()).toInstant(), ZoneId.systemDefault());
-        doReturn(fixedClock.instant()).when(clock).instant();
-        doReturn(fixedClock.getZone()).when(clock).getZone();
+        initMocks(this);
+        when(date.getDate()).thenReturn(LOCAL_DATE);
     }
 
     @Test
-    public void print_statement_for_a_new_account_prints_only_the_header() {
+    void print_statement_for_a_new_account_prints_only_the_header() {
        // When
         String actualStatement = account.printStatement();
 
@@ -46,7 +41,7 @@ public class AccountTest {
     }
 
     @Test
-    public void print_statement_after_a_deposit_displays_the_operation_in_the_statement_with_balance_equaling_amount() {
+    void print_statement_after_a_deposit_displays_the_operation_in_the_statement_with_balance_equaling_amount() {
        // When
         account.deposit(500);
         String actualStatement = account.printStatement();
@@ -59,7 +54,7 @@ public class AccountTest {
     }
 
     @Test
-    public void print_statement_after_multiple_deposits_displays_the_operations_in_the_statement_with_balance_equaling_the_sum_of_all_previous_amounts_deposed() {
+    void print_statement_after_multiple_deposits_displays_the_operations_in_the_statement_with_balance_equaling_the_sum_of_all_previous_amounts_deposed() {
        // When
         account.deposit(500);
         account.deposit(200);
@@ -74,8 +69,8 @@ public class AccountTest {
     }
 
     @Test
-    public void print_statement_after_a_deposit_and_a_withdrawal_displays_the_operations_in_the_statement_with_balance_decreasing_after_withdrawal() {
-       // When
+    void print_statement_after_a_deposit_and_a_withdrawal_displays_the_operations_in_the_statement_with_balance_decreasing_after_withdrawal() {
+        // When
         account.deposit(500);
         account.withdraw(200);
         String actualStatement = account.printStatement();
