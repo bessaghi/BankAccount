@@ -1,5 +1,7 @@
 package fr.lacombedulionvert;
 
+import static fr.lacombedulionvert.Transaction.operate;
+
 class Account {
 
     private static final String STATEMENT_HEADER = "DATE \t\t | AMOUNT \t | BALANCE\n";
@@ -11,11 +13,15 @@ class Account {
     }
 
     void deposit(int amount) {
-        transactions.add(Operation.DEPOSIT, amount);
+        addTransaction(Operation.DEPOSIT, amount);
     }
 
     void withdraw(int amount) {
-        transactions.add(Operation.WITHDRAWAL, amount);
+        addTransaction(Operation.WITHDRAWAL, amount);
+    }
+
+    private void addTransaction(Operation operation, int amount) {
+        transactions.add(operate(operation, amount));
     }
 
     String printStatement() {

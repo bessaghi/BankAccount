@@ -15,15 +15,11 @@ class Transactions {
         transactions = new LinkedHashMap<>();
     }
 
-    void add(Operation operation, int amount) {
+    void add(Transaction transaction) {
         transactions.put(
-                new Transaction(operation, amount),
-                getCurrentBalance(operation, amount)
+                transaction,
+                transaction.calculateBalance(getLatestBalance())
         );
-    }
-
-    private int getCurrentBalance(Operation operation, int amount) {
-        return operation.calculateCurrentBalance(amount, getLatestBalance());
     }
 
     private int getLatestBalance() {

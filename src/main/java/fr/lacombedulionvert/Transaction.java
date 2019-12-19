@@ -9,10 +9,18 @@ class Transaction {
     private final LocalDate date;
     private final int amount;
 
-    Transaction(Operation operation, int amount) {
+    private Transaction(Operation operation, int amount) {
         this.operation = operation;
         this.amount = amount;
         this.date = LocalDate.now();
+    }
+
+    static Transaction operate(Operation operation, int amount) {
+        return new Transaction(operation, amount);
+    }
+
+    int calculateBalance(int latestBalance) {
+        return operation.calculateCurrentBalance(amount, latestBalance);
     }
 
     @Override
