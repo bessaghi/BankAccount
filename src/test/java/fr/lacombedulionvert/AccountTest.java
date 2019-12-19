@@ -29,7 +29,6 @@ public class AccountTest {
 
         MockitoAnnotations.initMocks(this);
 
-        //tell your tests to return the specified LOCAL_DATE when calling LocalDate.now(clock)
         Clock fixedClock = Clock.fixed(LOCAL_DATE.atStartOfDay(ZoneId.systemDefault()).toInstant(), ZoneId.systemDefault());
         doReturn(fixedClock.instant()).when(clock).instant();
         doReturn(fixedClock.getZone()).when(clock).getZone();
