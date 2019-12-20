@@ -61,8 +61,8 @@ class AccountTest {
         // Then
         assertThat(actualStatement).isEqualTo(
                 "DATE \t\t | AMOUNT \t | BALANCE" +
-                "\n13/12/2019 \t | +500 \t | 500" +
-                "\n13/12/2019 \t | +200 \t | 700"
+                "\n13/12/2019 \t | +200 \t | 700" +
+                "\n13/12/2019 \t | +500 \t | 500"
         );
     }
 
@@ -76,8 +76,8 @@ class AccountTest {
         // Then
         assertThat(actualStatement).isEqualTo(
                 "DATE \t\t | AMOUNT \t | BALANCE" +
-                "\n13/12/2019 \t | +500 \t | 500" +
-                "\n13/12/2019 \t | -200 \t | 300"
+                "\n13/12/2019 \t | -200 \t | 300" +
+                "\n13/12/2019 \t | +500 \t | 500"
         );
     }
 }

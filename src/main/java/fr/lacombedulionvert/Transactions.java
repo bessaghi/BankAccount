@@ -1,7 +1,10 @@
 package fr.lacombedulionvert;
 
+import java.util.Collections;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import static java.util.stream.Collectors.joining;
 
@@ -24,9 +27,8 @@ class Transactions {
 
     @Override
     public String toString() {
-        return transactions.entrySet()
-                .stream()
-                .map(e -> e.getKey().toString() + e.getValue())
-                .collect(joining(DELIMITER));
+        List<String> reversed = transactions.entrySet().stream().map(e -> e.getKey().toString() + e.getValue()).collect(Collectors.toList());
+        Collections.reverse(reversed);
+        return String.join(DELIMITER, reversed);
     }
 }
