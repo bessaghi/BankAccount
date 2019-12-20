@@ -1,27 +1,24 @@
 package fr.lacombedulionvert;
 
-import java.util.LinkedHashMap;
-import java.util.Map;
-
 import static java.lang.String.join;
 
 class Transactions {
 
-    private Map<Transaction, Integer> transactions;
+    private Printer printer;
     private int latestBalance;
 
     Transactions() {
         latestBalance = 0;
-        transactions = new LinkedHashMap<>();
+        printer = new Printer();
     }
 
     void add(Transaction transaction) {
         latestBalance = transaction.calculateBalance(latestBalance);
-        transactions.put(transaction, latestBalance);
+        printer.add(transaction, latestBalance);
     }
 
     @Override
     public String toString() {
-        return new Formatter(transactions).print();
+        return printer.display();
     }
 }
