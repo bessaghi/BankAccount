@@ -19,14 +19,14 @@ class AccountTest {
     private Account account;
 
     @Mock
-    private Date date;
+    private Clock date;
 
     @BeforeEach
     void setUp() {
         account = new Account();
 
         initMocks(this);
-        when(date.getDate()).thenReturn(LOCAL_DATE);
+        when(date.now()).thenReturn(LOCAL_DATE);
     }
 
     @Test

@@ -9,7 +9,7 @@ class Account {
     private static final String STATEMENT_HEADER = "DATE \t\t | AMOUNT \t | BALANCE\n";
 
     private Transactions transactions;
-    private Date date;
+    private Clock date;
 
     Account() {
         transactions = new Transactions();
@@ -28,7 +28,7 @@ class Account {
         transactions.add(aTransaction()
                 .withOperation(operation)
                 .withAmount(amount)
-                .withDate(date.getDate())
+                .withDate(date.now())
                 .build()
         );
     }
