@@ -5,15 +5,13 @@ import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 
-import java.time.LocalDate;
-
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.when;
 import static org.mockito.MockitoAnnotations.initMocks;
 
 class AccountTest {
 
-    private final static LocalDate LOCAL_DATE = LocalDate.of(2019, 12, 13);
+    private final static String LOCAL_DATE = "13/12/2019";
 
     @InjectMocks
     private Account account;
@@ -49,7 +47,7 @@ class AccountTest {
         // Then
         assertThat(actualStatement).isEqualTo(
                 "DATE \t\t | AMOUNT \t | BALANCE" +
-                "\n2019-12-13 \t | +500 \t | 500"
+                "\n13/12/2019 \t | +500 \t | 500"
         );
     }
 
@@ -63,8 +61,8 @@ class AccountTest {
         // Then
         assertThat(actualStatement).isEqualTo(
                 "DATE \t\t | AMOUNT \t | BALANCE" +
-                "\n2019-12-13 \t | +500 \t | 500" +
-                "\n2019-12-13 \t | +200 \t | 700"
+                "\n13/12/2019 \t | +500 \t | 500" +
+                "\n13/12/2019 \t | +200 \t | 700"
         );
     }
 
@@ -78,8 +76,8 @@ class AccountTest {
         // Then
         assertThat(actualStatement).isEqualTo(
                 "DATE \t\t | AMOUNT \t | BALANCE" +
-                "\n2019-12-13 \t | +500 \t | 500" +
-                "\n2019-12-13 \t | -200 \t | 300"
+                "\n13/12/2019 \t | +500 \t | 500" +
+                "\n13/12/2019 \t | -200 \t | 300"
         );
     }
 }

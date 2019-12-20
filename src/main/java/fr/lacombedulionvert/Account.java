@@ -1,7 +1,5 @@
 package fr.lacombedulionvert;
 
-import java.time.LocalDate;
-
 import static fr.lacombedulionvert.Transaction.Builder.aTransaction;
 
 class Account {
@@ -13,7 +11,7 @@ class Account {
 
     Account() {
         transactions = new Transactions();
-        date = LocalDate::now;
+        date = new Clock();
     }
 
     void deposit(int amount) {

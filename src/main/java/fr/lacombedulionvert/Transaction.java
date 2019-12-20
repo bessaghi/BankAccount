@@ -7,9 +7,9 @@ class Transaction {
 
     private final Operation operation;
     private final int amount;
-    private final LocalDate date;
+    private final String date;
 
-    private Transaction(Operation operation, int amount, LocalDate date) {
+    private Transaction(Operation operation, int amount, String date) {
         this.operation = operation;
         this.amount = amount;
         this.date = date;
@@ -31,7 +31,7 @@ class Transaction {
     static final class Builder {
         private Operation operation;
         private int amount;
-        private LocalDate date;
+        private String date;
 
         static Builder aTransaction() {
             return new Builder();
@@ -47,7 +47,7 @@ class Transaction {
             return this;
         }
 
-        Builder withDate(LocalDate date) {
+        Builder withDate(String date) {
             this.date = date;
             return this;
         }
