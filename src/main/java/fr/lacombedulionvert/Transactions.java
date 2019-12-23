@@ -12,7 +12,7 @@ class Transactions {
 
     void add(Transaction transaction) {
         latestBalance = transaction.calculateBalance(latestBalance);
-        printer.add(transaction, latestBalance);
+        printer.print(transaction, latestBalance);
     }
 
     @Override
