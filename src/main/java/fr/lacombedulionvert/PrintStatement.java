@@ -11,7 +11,7 @@ class PrintStatement {
     private static final String STATEMENT_HEADER = "DATE \t\t | AMOUNT \t | BALANCE\n";
     private static final String DELIMITER = "\n";
 
-    private List<String> statements;
+    private final List<String> statements;
 
     PrintStatement(List<Statement> statements) {
         this.statements = transform(statements);
