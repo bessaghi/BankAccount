@@ -1,7 +1,5 @@
 package fr.lacombedulionvert;
 
-import static java.lang.String.join;
-
 class Transactions {
 
     private Printer printer;

@@ -17,13 +17,13 @@ class Printer {
         statements = new ArrayList<>();
     }
 
+    void add(Transaction transaction, int latestBalance) {
+        statements.add(transaction.toString() + latestBalance);
+    }
+
     String display() {
         statements.add(STATEMENT_HEADER);
         reverse(statements);
         return join(DELIMITER, statements);
-    }
-
-    void add(Transaction transaction, int latestBalance) {
-        statements.add(transaction.toString() + latestBalance);
     }
 }
