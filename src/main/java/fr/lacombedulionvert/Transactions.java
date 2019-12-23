@@ -10,6 +10,7 @@ import static java.util.Collections.reverse;
 
 class Transactions {
 
+    private static final String STATEMENT_HEADER = "DATE \t\t | AMOUNT \t | BALANCE\n";
     private static final String DELIMITER = "\n";
 
     private Map<Transaction, Integer> transactions;
@@ -38,8 +39,7 @@ class Transactions {
                 .collect(Collectors.toList());
     }
 
-    @Override
-    public String toString() {
-        return join(DELIMITER, reverseTransactions());
+    String print() {
+        return STATEMENT_HEADER + join(DELIMITER, reverseTransactions());
     }
 }

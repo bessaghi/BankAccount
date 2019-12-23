@@ -4,8 +4,6 @@ import static fr.lacombedulionvert.Transaction.Builder.aTransaction;
 
 class Account {
 
-    private static final String STATEMENT_HEADER = "DATE \t\t | AMOUNT \t | BALANCE\n";
-
     private Transactions transactions;
     private Clock date;
 
@@ -32,6 +30,6 @@ class Account {
     }
 
     String printStatement() {
-        return STATEMENT_HEADER + transactions;
+        return transactions.print();
     }
 }
