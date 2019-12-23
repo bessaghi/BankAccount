@@ -4,12 +4,12 @@ import static fr.lacombedulionvert.Transaction.Builder.aTransaction;
 
 class Account {
 
-    private TransactionsHistory transactionsHistory;
-    private Date date;
+    private Transactions transactions;
+    private BankDate date;
 
     Account() {
-        transactionsHistory = new TransactionsHistory();
-        date = new Date();
+        transactions = new Transactions();
+        date = new BankDate();
     }
 
     void deposit(int amount) {
@@ -21,7 +21,7 @@ class Account {
     }
 
     private void addTransaction(Operation operation, int amount) {
-        transactionsHistory.add(aTransaction()
+        transactions.operate(aTransaction()
                 .withOperation(operation)
                 .withAmount(amount)
                 .withDate(date.now())
@@ -30,6 +30,6 @@ class Account {
     }
 
     String printStatement() {
-        return transactionsHistory.print();
+        return transactions.print();
     }
 }

@@ -17,7 +17,7 @@ class AccountTest {
     private Account account;
 
     @Mock
-    private Date date;
+    private BankDate date;
 
     @BeforeEach
     void setUp() {

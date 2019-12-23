@@ -1,7 +1,5 @@
 package fr.lacombedulionvert;
 
-import java.time.LocalDate;
-
 class Transaction {
     private static final String SEPARATOR = " \t | ";
 

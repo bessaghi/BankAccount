@@ -3,7 +3,7 @@ package fr.lacombedulionvert;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-class Date {
+class BankDate {
 
     private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
