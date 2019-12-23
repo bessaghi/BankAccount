@@ -19,6 +19,6 @@ class TransactionsHistory {
     }
 
     String print() {
-        return new PrintTransactions().print(transactions);
+        return new PrintTransactions(transactions).print();
     }
 }
