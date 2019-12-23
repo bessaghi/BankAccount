@@ -11,19 +11,19 @@ class Printer {
     private static final String STATEMENT_HEADER = "DATE \t\t | AMOUNT \t | BALANCE";
     private static final String DELIMITER = "\n";
 
-    private List<String> transactions;
+    private List<String> statements;
 
     Printer() {
-        transactions = new ArrayList<>();
+        statements = new ArrayList<>();
     }
 
     String display() {
-        transactions.add(STATEMENT_HEADER);
-        reverse(transactions);
-        return join(DELIMITER, transactions);
+        statements.add(STATEMENT_HEADER);
+        reverse(statements);
+        return join(DELIMITER, statements);
     }
 
     void add(Transaction transaction, int latestBalance) {
-        transactions.add(transaction.toString() + latestBalance);
+        statements.add(transaction.toString() + latestBalance);
     }
 }

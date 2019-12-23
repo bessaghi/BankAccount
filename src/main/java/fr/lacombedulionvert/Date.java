@@ -8,6 +8,10 @@ class Date {
     private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
     String now() {
-        return LocalDate.now().format(DATE_FORMATTER);
+        return format(LocalDate.now());
+    }
+
+    private String format(LocalDate date) {
+        return date.format(DATE_FORMATTER);
     }
 }
