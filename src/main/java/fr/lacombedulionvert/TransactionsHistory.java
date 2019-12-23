@@ -3,12 +3,12 @@ package fr.lacombedulionvert;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-class Transactions {
+class TransactionsHistory {
 
     private Map<Transaction, Integer> transactions;
     private int latestBalance;
 
-    Transactions() {
+    TransactionsHistory() {
         transactions = new LinkedHashMap<>();
         latestBalance = 0;
     }

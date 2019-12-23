@@ -4,11 +4,11 @@ import static fr.lacombedulionvert.Transaction.Builder.aTransaction;
 
 class Account {
 
-    private Transactions transactions;
+    private TransactionsHistory transactionsHistory;
     private Clock date;
 
     Account() {
-        transactions = new Transactions();
+        transactionsHistory = new TransactionsHistory();
         date = new Clock();
     }
 
@@ -21,7 +21,7 @@ class Account {
     }
 
     private void addTransaction(Operation operation, int amount) {
-        transactions.add(aTransaction()
+        transactionsHistory.add(aTransaction()
                 .withOperation(operation)
                 .withAmount(amount)
                 .withDate(date.now())
@@ -30,6 +30,6 @@ class Account {
     }
 
     String printStatement() {
-        return transactions.print();
+        return transactionsHistory.print();
     }
 }
