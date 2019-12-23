@@ -3,7 +3,7 @@ package fr.lacombedulionvert;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-class Clock {
+class Date {
 
     String now() {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
