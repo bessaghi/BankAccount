@@ -5,8 +5,9 @@ import java.time.format.DateTimeFormatter;
 
 class Date {
 
+    private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
     String now() {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        return LocalDate.now().format(formatter);
+        return LocalDate.now().format(DATE_FORMATTER);
     }
 }
