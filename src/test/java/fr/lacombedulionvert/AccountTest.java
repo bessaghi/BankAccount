@@ -17,7 +17,7 @@ class AccountTest {
     private Account account;
 
     @Mock
-    private Clock date;
+    private Date date;
 
     @BeforeEach
     void setUp() {

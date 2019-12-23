@@ -5,11 +5,11 @@ import static fr.lacombedulionvert.Transaction.Builder.aTransaction;
 class Account {
 
     private TransactionsHistory transactionsHistory;
-    private Clock date;
+    private Date date;
 
     Account() {
         transactionsHistory = new TransactionsHistory();
-        date = new Clock();
+        date = new Date();
     }
 
     void deposit(int amount) {
